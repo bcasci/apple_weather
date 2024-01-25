@@ -1,0 +1,9 @@
+en:
+  activemodel:
+    errors:
+      models:
+        weather_forecast_command:
+          attributes:
+            address:
+              blank: "cannot be blank."
+              not_found: "not found, try again with a different address."
