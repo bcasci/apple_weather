@@ -6,6 +6,23 @@ The goal is demonstrate that I can build a Rails application, and follow some re
 
 There are comments throughout the code to indicate possible strategies that I might discuss with a team when building a bigger corporate/enterprise Rails appication.
 
+```
+brandoncasci$ rails test:all
+
+# Running:
+
+.......Rack::Handler is deprecated and replaced by Rackup::Handler
+Capybara starting Puma...
+* Version 6.4.2 , codename: The Eagle of Durango
+* Min threads: 0, max threads: 4
+* Listening on http://127.0.0.1:52619
+................
+
+Finished in 3.336514s, 6.8934 runs/s, 21.2797 assertions/s.
+23 runs, 71 assertions, 0 failures, 0 errors, 0 skips
+MacBook-Pro:apple_weather_alt brandoncasci$ 
+```
+
 ## Requirements
 
 - Must be done in Ruby on Rails
