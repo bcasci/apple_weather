@@ -6,6 +6,8 @@ The goal is demonstrate that I can build a Rails application, and follow some re
 
 There are comments throughout the code to indicate possible strategies that I might discuss with a team when building a bigger corporate/enterprise Rails appication.
 
+Also, I wasn't sure if I was expected to alter the requirements which were said in a separate e-email to be open to interpretation. Asking a user for an address in order to get a weather forecast, so it can then be cached by a zipcode felt like unessary steps when the forecast could be had by asking for a less specific location like city or zipcode.
+
 -[Brandon](https://www.brandoncasci.com/resume.html)
 
 ```
