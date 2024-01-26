@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module WebMockHelpers
   module GeocoderStubs
     def stub_empty_geocoder_api_result
@@ -32,8 +34,8 @@ module WebMockHelpers
             "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
             "osm_type": "way",
             "osm_id": 29683274,
-            "lat": #{latitude.to_s},
-            "lon": #{longitude.to_s},
+            "lat": #{latitude},
+            "lon": #{longitude},
             "class": "building",
             "type": "detached",
             "place_rank": 30,

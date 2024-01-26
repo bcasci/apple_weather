@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # The WebMockHelpers::OpenMeteoStubs module provides helper methods for stubbing
 # the Open Meteo API in tests. It includes methods for generating stubbed responses
 # for the API's time, maximum temperature, and precipitation probability results.

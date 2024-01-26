@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 module OpenMeteo
@@ -26,4 +28,3 @@ module OpenMeteo
     end
   end
 end
-

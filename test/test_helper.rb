@@ -1,7 +1,9 @@
-ENV["RAILS_ENV"] ||= "test"
+# frozen_string_literal: true
+
+ENV['RAILS_ENV'] ||= 'test'
 require 'minitest/autorun'
-require_relative "../config/environment"
-require "rails/test_help"
+require_relative '../config/environment'
+require 'rails/test_help'
 require 'webmock/minitest'
 require_relative 'helpers/web_mock_helpers/open_meteo_stubs'
 require_relative 'helpers/web_mock_helpers/geocoder_stubs'

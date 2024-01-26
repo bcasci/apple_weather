@@ -1,7 +1,8 @@
-require "test_helper"
+# frozen_string_literal: true
 
-require "capybara/cuprite"
+require 'test_helper'
 
+require 'capybara/cuprite'
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   driven_by :cuprite, using: :chrome, screen_size: [1920, 1080]

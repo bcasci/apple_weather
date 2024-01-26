@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpenMeteo
   # The Weather service is responsible for fetching weather forecast data from the Open-Meteo API.
   #
@@ -9,8 +11,8 @@ module OpenMeteo
   class WeatherService
     include HTTParty
 
-    TEMPERATURE_UNIT = 'fahrenheit'.freeze
-    DAILY_ATTRIBUTES = 'temperature_2m_max,precipitation_probability_max'.freeze
+    TEMPERATURE_UNIT = 'fahrenheit'
+    DAILY_ATTRIBUTES = 'temperature_2m_max,precipitation_probability_max'
 
     base_uri 'api.open-meteo.com/v1'
 
@@ -33,4 +35,3 @@ module OpenMeteo
     end
   end
 end
-

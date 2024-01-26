@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'application_system_test_case'
 
 class WeatherForecastsTest < ApplicationSystemTestCase
@@ -11,7 +13,7 @@ class WeatherForecastsTest < ApplicationSystemTestCase
     stub_geocoder_api(postal_code, latitude, longitude)
     stub_open_meteo_api(latitude, longitude)
   end
-  
+
   test 'creating a weather forecast - happy path' do
     visit root_path
 

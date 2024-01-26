@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
+# rubocop:disable Metrics/ClassLength
 class WeatherForecastCommandTest < ActiveSupport::TestCase
   include WebMockHelpers::GeocoderStubs
   include WebMockHelpers::OpenMeteoStubs
@@ -137,3 +140,4 @@ class WeatherForecastCommandTest < ActiveSupport::TestCase
     end
   end
 end
+# rubocop:enable Metrics/ClassLength

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # The WeatherForecastCommand class is responsible for fetching and processing weather forecast data.
 # It takes an address as an argument and uses a geocoding service to convert the address into coordinates.
 # It then fetches the raw forecast data for those coordinates and processes it into a more convenient format.
@@ -7,7 +9,6 @@
 #   command.run
 #   forecasts = command.forecasts
 #
-
 class WeatherForecastCommand
   include ActiveModel::Model
   include ActiveModel::Attributes
@@ -86,7 +87,7 @@ class WeatherForecastCommand
   # If `raw_forecast` is not present (e.g., because `run` has not been called yet or because it encountered an error),
   # `forecasts` returns an empty array.
   #
-  # @return [Array<DailyForecast>] An array of DailyForecast objects  
+  # @return [Array<DailyForecast>] An array of DailyForecast objects
   def forecasts
     # Instance variabel caching may or may not be appropriate here, depending on the use case.
     return [] unless raw_forecast
@@ -112,7 +113,7 @@ class WeatherForecastCommand
     dates = raw_forecast['daily']['time']
     max_temps = raw_forecast['daily']['temperature_2m_max']
     precip_probs = raw_forecast['daily']['precipitation_probability_max']
-    dates.zip(max_temps, precip_probs)   
+    dates.zip(max_temps, precip_probs)
   end
 
   def locate_address
