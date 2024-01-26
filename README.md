@@ -6,6 +6,8 @@ The goal is demonstrate that I can build a Rails application, and follow some re
 
 There are comments throughout the code to indicate possible strategies that I might discuss with a team when building a bigger corporate/enterprise Rails appication.
 
+-[Brandon](https://www.brandoncasci.com/resume.html)
+
 ```
 brandoncasci$ rails test:all
 
