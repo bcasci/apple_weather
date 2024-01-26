@@ -21,4 +21,10 @@ class DailyForecast
   attribute :precipitation_probability, :float
 
   validates :date, :maximum_temperature, :precipitation_probability, presence: true
+
+  # Overriding to_key.
+  # @return [Array<String>].
+  def to_key
+    [date.strftime('%A').downcase] if date.present?
+  end
 end

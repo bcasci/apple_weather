@@ -3,8 +3,8 @@ en:
     attributes:
       daily_forecast:
         date: "Date"
-        maximum_temperature: "Maximum Temperature"
-        precipitation_probability: "Chance of Precipitation"
+        maximum_temperature: "High Point &deg;F"
+        precipitation_probability: "% of Precipitation"
     errors:
       models:
         daily_forcase:

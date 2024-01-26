@@ -1,8 +1,11 @@
 <%= turbo_frame_tag "forecast_summary" do %>
   <article>
     <% if weather_forecast_command.forecasts.any? %>
-      <h2>dd</h2>
-      <%= weather_forecast_command.current_forecast?%>
+      <small>
+        <%= han(weather_forecast_command, :current_forecast, weather_forecast_command.current_forecast?)%>
+      </small>
+      <hr>
+      <%= render(partial: 'daily_forecast', collection: weather_forecast_command.forecasts) %>
     <% else %>
       <%= content_tag(:p, WeatherForecastCommand.human_attribute_name(:empty_forecast)) %>
     <% end %>

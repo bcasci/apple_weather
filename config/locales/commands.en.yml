@@ -2,7 +2,13 @@ en:
   activemodel:
     attributes:
       weather_forecast_command:
-        empty_forecast: "No forecast. Enter a valid address to get a forecast."  
+        empty_forecast: "No forecast. Enter a valid address to get a forecast."
+      weather_forecast_command/current_forecast:
+        true: 'Current forecast'
+        false: 'Cached forecast'
+      weather_forecast_command/role:
+        admin: "Admin!"
+        contributor: "Contributor"        
     errors:
       models:
         weather_forecast_command:
