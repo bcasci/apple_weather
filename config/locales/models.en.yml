@@ -1,0 +1,17 @@
+en:
+  activemodel:
+    attributes:
+      daily_forecast:
+        date: "Date"
+        maximum_temperature: "Maximum Temperature"
+        precipitation_probability: "Chance of Precipitation"
+    errors:
+      models:
+        daily_forcase:
+          attributes:
+            date:
+              blank: "cannot be blank."
+            maximum_temperature:
+              blank: "cannot be blank."
+            precipitation_probability:
+              blank: "cannot be blank."
