@@ -6,6 +6,8 @@ require 'webmock/minitest'
 require_relative 'helpers/web_mock_helpers/open_meteo_stubs'
 require_relative 'helpers/web_mock_helpers/geocoder_stubs'
 
+WebMock.disable_net_connect!(allow_localhost: true)
+
 module ActiveSupport
   class TestCase
     # Run tests in parallel with specified workers

@@ -1,0 +1,10 @@
+<%= turbo_frame_tag "forecast_summary" do %>
+  <article>
+    <% if weather_forecast_command.forecasts.any? %>
+      <h2>dd</h2>
+      <%= weather_forecast_command.current_forecast?%>
+    <% else %>
+      <%= content_tag(:p, WeatherForecastCommand.human_attribute_name(:empty_forecast)) %>
+    <% end %>
+  </article>
+<% end %>

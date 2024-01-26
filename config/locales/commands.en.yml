@@ -1,9 +1,12 @@
 en:
   activemodel:
+    attributes:
+      weather_forecast_command:
+        empty_forecast: "No forecast. Enter a valid address to get a forecast."  
     errors:
       models:
         weather_forecast_command:
           attributes:
             address:
               blank: "cannot be blank."
-              not_found: "not found, try again with a different address."
+              address_not_found: "not found, try again with a different address."

@@ -23,15 +23,16 @@ class WeatherForecastCommand
   #   @return [Boolean] whether the last forecast fetch was successful
   attribute :success, :boolean
 
-  # @!attribute [rw] new_forecast
-  #   @return [Boolean] whether a new forecast was fetched live or out of the cache
-  attribute :new_forecast, :boolean, default: false
+  # @!attribute [rw] current_forecast
+  #   @return [Boolean] whether a forecast was fetched live or taken from the cache
+  attribute :current_forecast, :boolean, default: false
 
   # @!attribute [rw] raw_forecast
   #   @return [Hash] the raw forecast data returned by the forecast API
   attribute :raw_forecast
 
-  alias new_forecast? new_forecast
+  alias current_forecast? current_forecast
+  alias success? success
 
   validates :address, presence: true
 
@@ -60,6 +61,8 @@ class WeatherForecastCommand
   #   command.run
   #
   def run
+    self.success = false
+
     return unless valid?
 
     location = locate_address
@@ -95,6 +98,14 @@ class WeatherForecastCommand
     end
   end
 
+  def self.model_name
+    @model_name ||= super.tap do |model_name|
+      model_name.param_key = 'weather_forecast'
+      model_name.route_key = 'weather_forecasts'
+      model_name.singular_route_key = 'weather_forecast'
+    end
+  end
+
   private
 
   def extract_daily_forecast_data
@@ -107,7 +118,7 @@ class WeatherForecastCommand
   def locate_address
     # In a real application, dependcy injection might be considered here
     geocode = Geocoder.search(address).first
-    return geocode if geocode
+    return geocode if geocode&.postal_code
 
     errors.add(:address, :address_not_found)
     nil
@@ -121,7 +132,7 @@ class WeatherForecastCommand
 
   def fetch_and_process_forecast(location)
     forecast = OpenMeteo::WeatherService.new.forecast(location.latitude, location.longitude)
-    self.new_forecast = true
+    self.current_forecast = true
 
     if forecast.success?
       # in a real application, we might want to do some additional processing of the forecast data,

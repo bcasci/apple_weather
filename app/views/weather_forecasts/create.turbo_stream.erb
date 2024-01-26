@@ -1,0 +1,7 @@
+<%= turbo_stream.replace dom_id(@weather_forecast_command) do %>
+  <%= render partial: 'form', locals: { weather_forecast_command: @weather_forecast_command } %>
+<% end %>
+
+<%= turbo_stream.replace "forecast_summary" do %>
+  <%= render partial: 'forecast_summary', locals: { weather_forecast_command: @weather_forecast_command } %>
+<% end %>

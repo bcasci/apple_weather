@@ -31,6 +31,11 @@ class WeatherForecastCommandTest < ActiveSupport::TestCase
     assert_mock command
   end
 
+  test '#current_forecast? aliases #current_forecast' do
+    command = WeatherForecastCommand.new(current_forecast: true)
+    assert_equal command.current_forecast, command.current_forecast?
+  end
+
   test '#forecasts returns an array of DailyForecast objects' do
     raw_forecast_data = {
       'daily' => {
@@ -57,6 +62,13 @@ class WeatherForecastCommandTest < ActiveSupport::TestCase
         end
       end
     end
+  end
+
+  test '#model_name provides correct param_key, route_key, and singular_route_key' do
+    model_name = WeatherForecastCommand.model_name
+    assert_equal 'weather_forecast', model_name.param_key
+    assert_equal 'weather_forecasts', model_name.route_key
+    assert_equal 'weather_forecast', model_name.singular_route_key
   end
 
   test '#run successfully executes with a valid address' do
@@ -88,5 +100,39 @@ class WeatherForecastCommandTest < ActiveSupport::TestCase
     assert command.errors.of_kind?(:address, :address_not_found)
     assert_not command.success
     assert_nil command.raw_forecast
+  end
+
+  test '#success? aliases #success' do
+    command = WeatherForecastCommand.new(success: true)
+    assert_equal command.success, command.success?
+  end
+
+  test 'weather forecast is cached' do
+    # Depending on the nature of the applicaiton, the cache store might be specified
+    # by dependency injection to the test subject
+
+    mem_cache_store = ActiveSupport::Cache.lookup_store(:memory_store)
+
+    stub_geocoder_api(@postal_code, @latitude, @longitude)
+    stub_open_meteo_api(@latitude, @longitude)
+
+    Rails.stub :cache, mem_cache_store do
+      # first run should not be cached
+      assert_nil Rails.cache.read(@postal_code)
+
+      command = WeatherForecastCommand.create(address: @address)
+
+      assert command.current_forecast?
+
+      # second run should be cached
+      Rails.cache.write(
+        @postal_code,
+        { 'source' => 'cache' }.merge(command.raw_forecast)
+      )
+      command = WeatherForecastCommand.create(address: @address)
+
+      assert_not command.current_forecast?
+      assert_equal 'cache', command.raw_forecast['source']
+    end
   end
 end

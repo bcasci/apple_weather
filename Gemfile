@@ -63,11 +63,15 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  gem 'error_highlight', '>= 0.4.0', platforms: [:ruby]
+  gem 'rubocop', '1.58.0', require: false
+  gem 'rubocop-rails', '2.22.2', require: false
 end
 
 group :test do
+  gem "cuprite"
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "selenium-webdriver"
   gem 'webmock', '~> 3.19.0'
 end
