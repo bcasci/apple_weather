@@ -125,6 +125,7 @@ class WeatherForecastCommandTest < ActiveSupport::TestCase
       assert command.current_forecast?
 
       # second run should be cached
+
       Rails.cache.write(
         @postal_code,
         { 'source' => 'cache' }.merge(command.raw_forecast)
